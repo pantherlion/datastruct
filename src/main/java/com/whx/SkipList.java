@@ -3,7 +3,6 @@ package com.whx;
 import ch.qos.logback.classic.Level;
 import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
-import org.junit.Assert;
 import org.slf4j.LoggerFactory;
 
 public class SkipList {
@@ -179,24 +178,4 @@ public class SkipList {
         return level;
     }
 
-    public static void main(String[] args){
-        SkipList list= new SkipList();
-        for(int i =0;i<100;i++){
-            list.insert(i);
-        }
-        list.showAllMember();
-        for(int i=0;i<100;i++){
-            Assert.assertEquals(true,list.exits(i));
-        }
-        logger.debug("高度为:"+list.getLevels());
-        for(int i=0;i<20;i++){
-            list.delete(i);
-        }
-        for(int i=0;i<20;i++){
-            Assert.assertEquals(false,list.exits(i));
-        }
-        for(int i=20;i<100;i++){
-            Assert.assertEquals(true,list.exits(i));
-        }
-    }
 }
