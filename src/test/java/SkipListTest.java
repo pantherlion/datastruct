@@ -1,7 +1,11 @@
 import com.whx.SkipList;
 import org.junit.Assert;
+import org.junit.Test;
 
 public class SkipListTest {
+
+    @Test
+    public void test()
 
     {
         SkipList list= new SkipList();
