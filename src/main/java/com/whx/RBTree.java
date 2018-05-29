@@ -5,9 +5,8 @@ import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 import org.junit.Assert;
 import org.slf4j.LoggerFactory;
-
-import java.util.Random;
 import java.util.Stack;
+import java.util.concurrent.BlockingDeque;
 
 public class RBTree {
     static int RED=1;
@@ -70,99 +69,98 @@ public class RBTree {
         return p;
    }
 
-   private Node delete(Node start,Node target){
-        Assert.assertTrue(target.left==null||target.right==null);
-        Node prev = start.parent;
-        Node p = start;
-        while(p!=null){
-            if(p==target){
-                Node temp = target.left==null?target.right:target.left;
-                if(temp!=null){
-                    temp.parent=prev;
-                }
-                if(prev==null){
-                    this.root=temp;
-                }
-                else{
-                    if(prev.left==p){
-                        prev.left=temp;
-                    }
-                    else{
-                        prev.right=temp;
-                    }
-                }
-                break;
-            }
-            else if(p.value<target.value){
-                prev=p;
-                p=p.right;
-            }
-            else{
-                prev=p;
-                p=p.left;
-            }
-        }
-        return target.left==null?target.right:target.left;
-   }
-
    public RBTree delete(int value){
-        Node p = this.root;
-        Node fixed=null;
-        while(p!=null){
-            if(p.value==value){
-                if(p.left==null||p.right==null){
-                    fixed=delete(p,p);
-                }
-                else{
-                    Node successor = successor(p);
-                    int temp = successor.value;
-                    fixed=delete(p,successor);
-                    p.value=temp;
-                }
-                break;
-            }
-            else if(p.value<value){
-                p=p.right;
-            }
-            else{
-                p=p.left;
-            }
+        Node node=indexOf(value);
+        if(node==null){
+            return this;
         }
-        if(fixed!=null){
-            deleteFix(fixed);
+        if(node.left!=null&&node.right!=null){
+            Node temp = successor(node);
+            node.value=temp.value;
+            node=temp;
         }
+        delete(node);
         return this;
    }
 
+    private void delete(Node p){
+        Assert.assertNotNull(p);
+        //只有删除黑色叶子节点才需要deleteFix
+        if(p.left==null&&p.right==null&&colorOfNode(p)==BLACK){
+            deleteFix(p);
+        }
+
+        Node temp = (p.left==null?p.right:p.left);
+        Node father = p.parent;
+        if(temp!=null){
+            temp.color=BLACK;
+            temp.parent=father;
+        }
+        if(father==null){
+            this.root=temp;
+        }
+        else{
+            if(p==father.left){
+                father.left=temp;
+            }
+            else{
+                father.right=temp;
+            }
+        }
+    }
+
    private void deleteFix(Node p){
         Assert.assertNotNull(p);
-        while(p.parent!=null && p.color!=RED){
+        Assert.assertEquals(p.color,BLACK);
+        while (p.parent!=null&&p.color==BLACK){
             Node father = p.parent;
-            Node brother = father.left==p?father.right:father.left;
+            Node brother= (p==father.left?father.right:father.left);
             Assert.assertNotNull(brother);
-            //CASE1. brother is red
             if(colorOfNode(brother)==RED){
-                rotateLeft(father);
+                if(p==father.left){
+                    rotateLeft(father);
+                }
+                else{
+                    rotateRight(father);
+                }
                 father.color=RED;
                 brother.color=BLACK;
             }
-            //CASE2 brother is black and brother'children is both black
             else if(colorOfNode(brother.left)==BLACK&&colorOfNode(brother.right)==BLACK){
-                brother.color=RED;
-                p=father;
+                if(colorOfNode(father)==RED){
+                    father.color=BLACK;
+                    brother.color=RED;
+                    p=father;
+                    break;
+                }
+                else{
+                    brother.color=RED;
+                    p=father;
+                }
             }
-            //CASE 3 brother is black and brother's left child is red
-            else if(colorOfNode(brother.left)==RED){
+            else if(p==father.left&&colorOfNode(brother.left)==RED&&colorOfNode(brother.right)==BLACK){
                 rotateRight(brother);
                 brother.color=RED;
                 brother.parent.color=BLACK;
             }
-            //CASE 4 brother is black and brother's right child is red
-            else if(colorOfNode(brother.right)==RED){
+            else if(p==father.right&&colorOfNode(brother.right)==RED&&colorOfNode(brother.left)==BLACK){
+                rotateLeft(brother);
+                brother.color=RED;
+                brother.parent.color=BLACK;
+            }
+            else if(p==father.left&&colorOfNode(p.right)==RED){
                 rotateLeft(father);
                 brother.color=father.color;
                 father.color=BLACK;
                 brother.right.color=BLACK;
+                p=brother;
+                break;
+            }
+            else if(p==father.right&&colorOfNode(p.left)==RED){
+                rotateRight(father);
+                brother.color=father.color;
+                father.color=BLACK;
+                brother.left.color=BLACK;
                 p=brother;
                 break;
             }
@@ -268,14 +266,12 @@ public class RBTree {
             else{
                 if(grandFather.left==father&&father.left==p){
                     rotateRight(grandFather);
-                    grandFather.color=RED;
-                    father.color=BLACK;
                 }
                 else{
                     rotateLeft(grandFather);
-                    grandFather.color=RED;
-                    father.color=BLACK;
                 }
+                grandFather.color=RED;
+                father.color=BLACK;
                 p=father;
                 break;
             }
