@@ -4,6 +4,7 @@
     <list default="true" id="bf0f57da-51b4-4a79-a84c-fe79b186136d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/whx/RBTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/whx/RBTree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/RBTreeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/RBTreeTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -43,7 +44,7 @@
       <file leaf-file-name="SkipListTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/SkipListTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
+            <state relative-caret-position="19">
               <caret line="7" column="19" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -52,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RBTree.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RBTree.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/whx/RBTree.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="96" column="31" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
+            <state relative-caret-position="4171">
+              <caret line="255" column="35" lean-forward="true" selection-start-line="255" selection-start-column="35" selection-end-line="255" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,11 +65,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RBTreeTest.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RBTreeTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/RBTreeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+            <state relative-caret-position="304">
+              <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -389,8 +390,8 @@
         <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/com/whx/SkipList.java" />
         <option value="$PROJECT_DIR$/src/test/java/SkipListTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/RBTreeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/whx/RBTree.java" />
+        <option value="$PROJECT_DIR$/src/test/java/RBTreeTest.java" />
       </list>
     </option>
   </component>
@@ -417,7 +418,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -459,14 +459,22 @@
             </path>
             <path>
               <item name="datastruct" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datastruct" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="datastruct" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -498,7 +506,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.RBTreeTest.testSequence">
+  <component name="RunManager" selected="JUnit.RBTreeTest.testRandom">
     <configuration name="RBTree" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.whx.RBTree" />
       <module name="datastruct" />
@@ -510,19 +518,25 @@
         </pattern>
       </extension>
     </configuration>
-    <configuration name="SkipList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.whx.SkipList" />
-      <module name="datastruct" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.whx.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="RBTreeTest.insert1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="datastruct" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="RBTreeTest" />
+      <option name="METHOD_NAME" value="insert1" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration name="RBTreeTest.testRandom" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="datastruct" />
@@ -614,19 +628,19 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="Application.SkipList" />
       <item itemvalue="JUnit.SkipListTest.test" />
       <item itemvalue="Application.RBTree" />
       <item itemvalue="JUnit.RBTreeTest.testSequence" />
       <item itemvalue="JUnit.RBTreeTest.testRandom" />
+      <item itemvalue="JUnit.RBTreeTest.insert1" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RBTreeTest.testSequence" />
         <item itemvalue="JUnit.RBTreeTest.testRandom" />
+        <item itemvalue="JUnit.RBTreeTest.testSequence" />
+        <item itemvalue="JUnit.RBTreeTest.insert1" />
         <item itemvalue="Application.RBTree" />
         <item itemvalue="JUnit.SkipListTest.test" />
-        <item itemvalue="Application.SkipList" />
       </list>
     </recent_temporary>
   </component>
@@ -643,7 +657,8 @@
       <workItem from="1526862709163" duration="4619000" />
       <workItem from="1526867908109" duration="6310000" />
       <workItem from="1527065962896" duration="7842000" />
-      <workItem from="1527581872294" duration="8692000" />
+      <workItem from="1527581872294" duration="8809000" />
+      <workItem from="1527604041747" duration="2984000" />
     </task>
     <task id="LOCAL-00001" summary="第一次提交">
       <created>1526868665933</created>
@@ -656,48 +671,69 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="SkipListTest_test - 2018.05.21 at 16h 39m 38s.xml">
-      <configuration name="SkipListTest.test" configurationId="JUnit" />
+    <history-entry file="RBTreeTest_insert1 - 2018.05.29 at 22h 59m 17s.xml">
+      <configuration name="RBTreeTest.insert1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RBTreeTest_testSequence - 2018.05.23 at 20h 47m 22s.xml">
-      <configuration name="RBTreeTest.testSequence" configurationId="JUnit" />
+    <history-entry file="RBTreeTest_insert1 - 2018.05.29 at 22h 59m 29s.xml">
+      <configuration name="RBTreeTest.insert1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="RBTreeTest_testRandom - 2018.05.23 at 20h 47m 35s.xml">
+    <history-entry file="RBTreeTest_insert1 - 2018.05.29 at 23h 06m 01s.xml">
+      <configuration name="RBTreeTest.insert1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RBTreeTest_insert1 - 2018.05.29 at 23h 06m 46s.xml">
+      <configuration name="RBTreeTest.insert1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RBTreeTest_insert1 - 2018.05.29 at 23h 10m 44s.xml">
+      <configuration name="RBTreeTest.insert1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RBTreeTest_testRandom - 2018.05.29 at 23h 11m 02s.xml">
+      <configuration name="RBTreeTest.testRandom" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RBTreeTest_testRandom - 2018.05.29 at 23h 11m 16s.xml">
+      <configuration name="RBTreeTest.testRandom" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RBTreeTest_testRandom - 2018.05.29 at 23h 16m 08s.xml">
+      <configuration name="RBTreeTest.testRandom" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RBTreeTest_insert1 - 2018.05.29 at 23h 16m 51s.xml">
+      <configuration name="RBTreeTest.insert1" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="RBTreeTest_testRandom - 2018.05.29 at 23h 16m 57s.xml">
       <configuration name="RBTreeTest.testRandom" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42513000" />
+    <option name="totallyTimeSpent" value="45614000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" order="3" />
+      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Database" order="3" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39968154" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.32961783" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3280255" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.0" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22133759" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3290938" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24963397" />
       <window_info id="Web" order="2" side_tool="true" />
-      <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="right" id="Gradle" order="3" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Messages" order="7" weight="0.32961783" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32961783" />
@@ -999,10 +1035,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/whx/SkipList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/SkipListTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
+        <state relative-caret-position="19">
           <caret line="7" column="19" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/whx/RBTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4171">
+          <caret line="255" column="35" lean-forward="true" selection-start-line="255" selection-start-column="35" selection-end-line="255" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1011,25 +1064,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/RBTreeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="24" column="39" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/whx/SkipList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="10" column="73" selection-start-line="10" selection-start-column="73" selection-end-line="10" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/whx/RBTree.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="96" column="31" selection-start-line="96" selection-start-column="31" selection-end-line="96" selection-end-column="31" />
+        <state relative-caret-position="304">
+          <caret line="32" column="17" selection-start-line="32" selection-start-column="17" selection-end-line="32" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

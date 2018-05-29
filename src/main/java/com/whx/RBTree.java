@@ -216,6 +216,9 @@ public class RBTree {
         }
         p.parent=rightChild;
         p.right=rightChild.left;
+        if(rightChild.left!=null){
+            rightChild.left.parent=p;
+        }
         rightChild.left=p;
    }
 
@@ -233,16 +236,20 @@ public class RBTree {
         }
         p.parent=leftChild;
         p.left=leftChild.right;
+        if(leftChild.right!=null){
+            leftChild.right.parent=p;
+        }
         leftChild.right=p;
    }
 
    private void insertFix(Node p){
         Assert.assertNotNull(p);
         Assert.assertEquals(RED,p.color);
-        while(p.parent!=null&&p.parent.color==RED){
+        while(colorOfNode(p.parent)==RED){
             Node father=p.parent;
             Node grandFather=father.parent;
-            Node uncle=father==grandFather.left?grandFather.right:grandFather.left;
+            Assert.assertNotNull(grandFather);
+            Node uncle = (father==grandFather.left?grandFather.right:grandFather.left);
             //CASE 1. uncle is red
             if(colorOfNode(uncle)==RED){
                 uncle.color=BLACK;
@@ -252,7 +259,7 @@ public class RBTree {
             }
             //CASE 2. self is left right  child of father and father is left child of grandFather
             //          or self is left  child of father and father is right child of grandFather
-            else if(grandFather.left==father&&father.right==p||grandFather.right==father&&father.left==p){
+            else if((grandFather.left==father&&father.right==p)||(grandFather.right==father&&father.left==p)){
                 if(grandFather.left==father){
                     rotateLeft(father);
                 }
@@ -301,7 +308,5 @@ public class RBTree {
             logger.debug(""+p.value);
             p=p.right;
         }
-
-    }
-
-}
+        }
+        }
