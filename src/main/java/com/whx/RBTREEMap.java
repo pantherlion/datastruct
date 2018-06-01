@@ -5,9 +5,10 @@ import ch.qos.logback.classic.Logger;
 import ch.qos.logback.classic.LoggerContext;
 import org.junit.Assert;
 import org.slf4j.LoggerFactory;
+
 import java.util.Stack;
 
-public class RBTree {
+public class RBTREEMap <K extends Comparable<K>,V> {
     static int RED=1;
     static int BLACK=0;
     private Node root;
@@ -22,43 +23,59 @@ public class RBTree {
     }
 
     private class Node{
-       int color;
-       Node left;
-       Node right;
-       Node parent;
-       int value;
-       Node(int value){
-           this.value=value;
-       }
-   }
-   public boolean exits(int value){
-        Node p = indexOf(value);
+        int color;
+        Node left;
+        Node right;
+        Node parent;
+        K key;
+        V value;
+        Node(K key,V value){
+            this.key=key;
+            this.value=value;
+        }
+    }
+    public boolean exits(K key){
+        Node p = indexOf(key);
         if(p==null){
             return false;
         }
         return true;
-   }
+    }
 
-   public RBTree insert(int value){
-        Node p = indexOfInsert(value);
-        Node newNode = new Node(value);
+    public RBTREEMap<K, V> insert(K key,V value){
+        Node p = indexOfInsert(key);
         if(p==null){
+            Node newNode = new Node(key,value);
             this.root=newNode;
             return this;
         }
+        if(p.key.compareTo(key)==0){
+            //直接修改value
+            p.value=value;
+            return this;
+        }
+        Node newNode = new Node(key,value);
         newNode.color=RED;
         newNode.parent=p;
-        if(p.value>value){
+        if(p.key.compareTo(key)>0){
             p.left=newNode;
         }
         else{
             p.right=newNode;
         }
-       insertFix(newNode);
+        insertFix(newNode);
         return this;
-   }
+    }
 
-   private Node successor(Node p){
+    public V get(K key){
+        Node p = indexOf(key);
+        if(p==null){
+            return null;
+        }
+        return p.value;
+    }
+
+    private Node successor(Node p){
         Assert.assertNotNull(p);
         Assert.assertNotNull(p.right);
         p=p.right;
@@ -66,29 +83,28 @@ public class RBTree {
             p=p.left;
         }
         return p;
-   }
+    }
 
-   public RBTree delete(int value){
-        Node node=indexOf(value);
+    public RBTREEMap<K, V> delete(K key){
+        Node node=indexOf(key);
         if(node==null){
             return this;
         }
         if(node.left!=null&&node.right!=null){
             Node temp = successor(node);
             node.value=temp.value;
+            node.key=temp.key;
             node=temp;
         }
         delete(node);
         return this;
-   }
+    }
 
     private void delete(Node p){
-        Assert.assertNotNull(p);
         //只有删除黑色叶子节点才需要deleteFix
         if(p.left==null&&p.right==null&&colorOfNode(p)==BLACK){
             deleteFix(p);
         }
-
         Node temp = (p.left==null?p.right:p.left);
         Node father = p.parent;
         if(temp!=null){
@@ -108,7 +124,7 @@ public class RBTree {
         }
     }
 
-   private void deleteFix(Node p){
+    private void deleteFix(Node p){
         Assert.assertNotNull(p);
         Assert.assertEquals(p.color,BLACK);
         while (p.parent!=null){
@@ -167,40 +183,43 @@ public class RBTree {
         if(p.parent==null){
             this.root=p;
         }
-   }
+    }
 
-   private Node indexOfInsert(int value){
-       Node p = this.root;
-       Node prev=null;
-       while(p!=null){
-           prev=p;
-           if(p.value<=value){
-               p=p.right;
-           }
-           else{
-               p=p.left;
-           }
-       }
-       return prev;
-   }
+    private Node indexOfInsert(K key){
+        Node p = this.root;
+        Node prev=null;
+        while(p!=null){
+            prev=p;
+            if(p.key.compareTo(key)==0){
+                return p;
+            }
+            else if(p.key.compareTo(key)<0){
+                p=p.right;
+            }
+            else{
+                p=p.left;
+            }
+        }
+        return prev;
+    }
 
-   private Node indexOf(int value){
-       Node p = this.root;
-       while(p!=null){
-           if(p.value==value){
-               break;
-           }
-           if(p.value<value){
-               p=p.right;
-           }
-           else{
-               p=p.left;
-           }
-       }
-       return p;
-   }
+    private Node indexOf(K key){
+        Node p = this.root;
+        while(p!=null){
+            if(p.key.compareTo(key)==0){
+                break;
+            }
+            if(p.key.compareTo(key)<0){
+                p=p.right;
+            }
+            else{
+                p=p.left;
+            }
+        }
+        return p;
+    }
 
-   private void rotateLeft(Node p){
+    private void rotateLeft(Node p){
         Node father = p.parent;
         Node rightChild=p.right;
         rightChild.parent=father;
@@ -218,9 +237,9 @@ public class RBTree {
             rightChild.left.parent=p;
         }
         rightChild.left=p;
-   }
+    }
 
-   private void rotateRight(Node p){
+    private void rotateRight(Node p){
         Node father=p.parent;
         Node leftChild=p.left;
         leftChild.parent=father;
@@ -238,9 +257,9 @@ public class RBTree {
             leftChild.right.parent=p;
         }
         leftChild.right=p;
-   }
+    }
 
-   private void insertFix(Node p){
+    private void insertFix(Node p){
         Assert.assertNotNull(p);
         Assert.assertEquals(RED,p.color);
         while(colorOfNode(p.parent)==RED){
@@ -285,7 +304,7 @@ public class RBTree {
             this.root=p;
             this.root.color=BLACK;
         }
-   }
+    }
 
     private int colorOfNode(Node p){
         if(p==null){
@@ -306,5 +325,5 @@ public class RBTree {
             logger.debug(""+p.value);
             p=p.right;
         }
-        }
+    }
 }

@@ -9,11 +9,12 @@ public class RBTreeTest {
     @Test
     public void testSequence(){
         RBTree tree = new RBTree();
-        for(int i=0;i<100;i++){
+        for(int i=0;i<100000;i++){
             tree.insert(i);
             Assert.assertTrue(tree.exits(i));
             if(i%2==0){
                 tree.delete(i);
+                Assert.assertFalse(tree.exits(i));
             }
         }
         tree.showAllMembers();
@@ -24,15 +25,14 @@ public class RBTreeTest {
         {
             RBTree tree = new RBTree();
             Random random = new Random();
-            for(int i=0;i<1000;i++){
+            for(int i=0;i<1000000;i++){
                 int temp = random.nextInt(100);
                 tree.insert(temp);
                 Assert.assertTrue(temp+"存在",tree.exits(temp));
               if(temp%2==0){
                     tree.delete(temp);
-                }
+              }
             }
-            tree.showAllMembers();
         }
     }
 
